@@ -9,7 +9,14 @@ from __future__ import annotations
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from f1_terminal.api.routers import catalogue, laps, stints
+from f1_terminal.api.routers import (
+    catalogue,
+    drivers,
+    laps,
+    results,
+    session_summary,
+    stints,
+)
 from f1_terminal.config import settings
 from f1_terminal.db.engine import init_app_db
 
@@ -33,7 +40,10 @@ def create_app() -> FastAPI:
         return {"status": "ok"}
 
     app.include_router(catalogue.router)
+    app.include_router(drivers.router)
     app.include_router(laps.router)
+    app.include_router(results.router)
+    app.include_router(session_summary.router)
     app.include_router(stints.router)
 
     init_app_db()  # create the app DB + tables (idempotent)

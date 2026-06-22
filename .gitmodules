@@ -1,3 +1,0 @@
-[submodule "f1-db"]
-	path = external/f1-db
-	url = https://github.com/J-Swisher/f1-db.git
